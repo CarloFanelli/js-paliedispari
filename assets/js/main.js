@@ -38,7 +38,7 @@ function EvenOrOdd(userNumber, computerNumber) {
     //console.log(computerNumber);
     const resultToCheck = computerNumber + userNumber;
 
-    console.log(resultToCheck);
+    //console.log(resultToCheck);
 
     return resultToCheck % 2 === 0;
 
@@ -59,15 +59,15 @@ document.getElementById('pari').addEventListener('click', function (e) {
 
     const resultToShow = computerNumber + inputUtenteDOM;
 
-    console.log(inputUtenteDOM);
+    //console.log(inputUtenteDOM);
 
     if (EvenOrOdd(inputUtenteDOM, computerNumber)) {
 
-        console.log('pari');
+        //console.log('pari');
         document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai vinto!`
 
     } else {
-        console.log('dispari');
+        //console.log('dispari');
         document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai perso!`
     }
 
@@ -85,7 +85,7 @@ document.getElementById('dispari').addEventListener('click', function (e) {
 
     const resultToShow = computerNumber + inputUtenteDOM;
 
-    console.log(inputUtenteDOM);
+    //console.log(inputUtenteDOM);
 
     if (EvenOrOdd(inputUtenteDOM, computerNumber)) {
 
