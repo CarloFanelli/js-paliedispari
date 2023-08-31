@@ -11,21 +11,91 @@ Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzion
     - funzione pari dispari che dichiara chi vince
      */
 
-// input dal DOM
-const inputUtenteDOM = document.getElementById('numero-utente');
 
-// collego i due bottoni del DOM
+/**
+ * generate a number between min and max, both included
+ * @param {number} min 
+ * @param {number} max 
+ * @returns {number}
+ */
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-document.getElementById('pari').addEventListener('click',function(e){
+//console.log(getRndInteger(1,5));
 
+/**
+ * EvenOrOdd 
+ * return true if number is even & return false if number is odd
+ * @param {number} userNumber 
+ * @returns {boolean}
+ */
+
+const computerNumber = getRndInteger(1,5);
+
+
+function EvenOrOdd(userNumber,computerNumber) {
+    
+    //console.log(computerNumber);
+    const resultToCheck = computerNumber + userNumber; //come posso estrarlo?
+
+    
+    console.log(resultToCheck);
+
+    if (resultToCheck % 2 === 0) {
+
+        return true;
+        
+    } else {
+        
+        return false;
+
+    }
+    
+}
+
+
+// collego i due bottoni del DOM e gli assegno la funzione EvenOrOdd
+
+document.getElementById('pari').addEventListener('click', function (e) {
+    
     e.preventDefault();
-    console.log(inputUtenteDOM).value;
+    
+    // input dal DOM -- perché funziona solo se dentro qui?
+    const inputUtenteDOM = document.getElementById('numero-utente').valueAsNumber;
+
+    console.log(inputUtenteDOM);
+
+    if (EvenOrOdd(inputUtenteDOM,computerNumber)) {
+
+        console.log('pari');
+        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Hai vinto!`
+        
+    } else {
+        console.log('dispari');
+        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Hai perso!`
+    }
+    
 })
 
-document.getElementById('dispari').addEventListener('click',function(e){
+document.getElementById('dispari').addEventListener('click', function (e) {
 
     e.preventDefault();
-    console.log(inputUtenteDOM).value;
+    
+    // input dal DOM -- perché funziona solo se dentro qui?
+    const inputUtenteDOM = document.getElementById('numero-utente').valueAsNumber;
+
+    console.log(inputUtenteDOM);
+
+    if (EvenOrOdd(inputUtenteDOM,computerNumber)) {
+
+        console.log('pari');
+        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Hai perso!`
+        
+    } else {
+        console.log('dispari');
+        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Hai vinto!`
+    }
 })
 
 
