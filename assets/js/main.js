@@ -33,44 +33,44 @@ function getRndInteger(min, max) {
 
 
 
-function EvenOrOdd(userNumber,computerNumber) {
-    
+function EvenOrOdd(userNumber, computerNumber) {
+
     //console.log(computerNumber);
-    const resultToCheck = computerNumber + userNumber; //come posso estrarlo?
+    const resultToCheck = computerNumber + userNumber;
 
     console.log(resultToCheck);
 
     return resultToCheck % 2 === 0;
-    
+
 }
 
 
 // collego i due bottoni del DOM e gli assegno la funzione EvenOrOdd
 
 document.getElementById('pari').addEventListener('click', function (e) {
-    
+
     e.preventDefault();
 
     //genero il randomico numero
-    const computerNumber = getRndInteger(1,5);
+    const computerNumber = getRndInteger(1, 5);
 
     // input dal DOM -- perché funziona solo se dentro qui?
     const inputUtenteDOM = document.getElementById('numero-utente').valueAsNumber;
-    
+
     const resultToShow = computerNumber + inputUtenteDOM;
-    
+
     console.log(inputUtenteDOM);
 
-    if (EvenOrOdd(inputUtenteDOM,computerNumber)) {
+    if (EvenOrOdd(inputUtenteDOM, computerNumber)) {
 
         console.log('pari');
         document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai vinto!`
-        
+
     } else {
         console.log('dispari');
         document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai perso!`
     }
-    
+
 })
 
 document.getElementById('dispari').addEventListener('click', function (e) {
@@ -78,20 +78,20 @@ document.getElementById('dispari').addEventListener('click', function (e) {
     e.preventDefault();
 
     //genero il numero random
-    const computerNumber = getRndInteger(1,5);
+    const computerNumber = getRndInteger(1, 5);
 
     // input dal DOM -- perché funziona solo se dentro qui?
     const inputUtenteDOM = document.getElementById('numero-utente').valueAsNumber;
-    
+
     const resultToShow = computerNumber + inputUtenteDOM;
 
     console.log(inputUtenteDOM);
 
-    if (EvenOrOdd(inputUtenteDOM,computerNumber)) {
+    if (EvenOrOdd(inputUtenteDOM, computerNumber)) {
 
         console.log('pari');
         document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai perso!`
-        
+
     } else {
         console.log('dispari');
         document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai vinto!`
@@ -117,3 +117,44 @@ Chiedere all’utente di inserire una parola Creare una funzione per capire se l
         - stampo se è palindromo o no
 */
 
+function isPalindrome(userWord) {
+
+    //console.log(userWord);
+
+    const lowerWord = userWord.toLowerCase()
+
+    let i = 0;
+    let x = lowerWord.length - 1;
+
+    while (x > 0 && x > i) {
+
+        //console.log(lowerWord.charAt(i), lowerWord.charAt(x));
+
+        if (lowerWord.charAt(i) == lowerWord.charAt(x)) {
+            document.getElementById('result-palindrome').innerHTML = userWord + ' è palindroma';
+
+        }
+        else {
+            document.getElementById('result-palindrome').innerHTML = userWord + ' non è palindroma';
+
+        }
+
+        ++i;
+        --x;
+    }
+
+}
+
+
+
+document.getElementById('palindrome').addEventListener('click', function (e) {
+    e.preventDefault();
+
+
+    //console.log(userWordDOC.length);
+
+    const userWordDOC = document.getElementById('user-word').value;
+
+    isPalindrome(userWordDOC);
+
+})
