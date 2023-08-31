@@ -31,7 +31,6 @@ function getRndInteger(min, max) {
  * @returns {boolean}
  */
 
-const computerNumber = getRndInteger(1,5);
 
 
 function EvenOrOdd(userNumber,computerNumber) {
@@ -39,18 +38,9 @@ function EvenOrOdd(userNumber,computerNumber) {
     //console.log(computerNumber);
     const resultToCheck = computerNumber + userNumber; //come posso estrarlo?
 
-    
     console.log(resultToCheck);
 
-    if (resultToCheck % 2 === 0) {
-
-        return true;
-        
-    } else {
-        
-        return false;
-
-    }
+    return resultToCheck % 2 === 0;
     
 }
 
@@ -60,20 +50,25 @@ function EvenOrOdd(userNumber,computerNumber) {
 document.getElementById('pari').addEventListener('click', function (e) {
     
     e.preventDefault();
-    
+
+    //genero il randomico numero
+    const computerNumber = getRndInteger(1,5);
+
     // input dal DOM -- perché funziona solo se dentro qui?
     const inputUtenteDOM = document.getElementById('numero-utente').valueAsNumber;
-
+    
+    const resultToShow = computerNumber + inputUtenteDOM;
+    
     console.log(inputUtenteDOM);
 
     if (EvenOrOdd(inputUtenteDOM,computerNumber)) {
 
         console.log('pari');
-        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Hai vinto!`
+        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai vinto!`
         
     } else {
         console.log('dispari');
-        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Hai perso!`
+        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai perso!`
     }
     
 })
@@ -81,28 +76,27 @@ document.getElementById('pari').addEventListener('click', function (e) {
 document.getElementById('dispari').addEventListener('click', function (e) {
 
     e.preventDefault();
-    
+
+    //genero il numero random
+    const computerNumber = getRndInteger(1,5);
+
     // input dal DOM -- perché funziona solo se dentro qui?
     const inputUtenteDOM = document.getElementById('numero-utente').valueAsNumber;
+    
+    const resultToShow = computerNumber + inputUtenteDOM;
 
     console.log(inputUtenteDOM);
 
     if (EvenOrOdd(inputUtenteDOM,computerNumber)) {
 
         console.log('pari');
-        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Hai perso!`
+        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai perso!`
         
     } else {
         console.log('dispari');
-        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Hai vinto!`
+        document.getElementById('result').innerHTML = `numero del computer: ${computerNumber}. Somma: ${resultToShow}, hai vinto!`
     }
 })
-
-
-
-
-
-
 
 
 
@@ -111,3 +105,15 @@ document.getElementById('dispari').addEventListener('click', function (e) {
   Palidroma
 Chiedere all’utente di inserire una parola Creare una funzione per capire se la parola inserita è palindroma
  */
+
+/* mosse
+    - input dell'utente, che rendo tutto minuscolo SEMPRE
+    
+    funzione isPalindrome:
+    - if/else per il numero di caratteri
+        - for i
+            - .charAt(i) per avere il singolo carattere da una stringa
+            - confronto i caratteri a due a due partendo dal primo e l'ultimo e via dicendo verso il centro
+        - stampo se è palindromo o no
+*/
+
